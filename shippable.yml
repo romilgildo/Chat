@@ -14,7 +14,8 @@ before_install:
  - npm install mongodb
  - npm install bcrypt-nodejs
  - npm install -g mocha
+ - cd src; npm install .
  
  # Running npm test to run your test cases
 script:
- - cd test; mocha test.js
+ - cd src; mocha
