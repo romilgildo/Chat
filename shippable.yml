@@ -11,11 +11,8 @@ node_js:
 
 # npm install runs by default but shown here for illustrative purposes
 before_install:
- - npm install mongodb
- - npm install bcrypt-nodejs
  - npm install -g mocha
- - cd src; npm install .
  
  # Running npm test to run your test cases
 script:
- - cd src; mocha
+ - npm test
