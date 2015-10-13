@@ -15,6 +15,7 @@ var io          = require('socket.io')(http);
 var MongoClient = require('mongodb').MongoClient;
 var userDAO     = require('./dao/UserDAO').UserDAO;
 var messageDAO  = require('./dao/MessageDAO').MessageDAO;
+var assert		= require("assert");
 
 /* MongoDB Configurations */
 var mdbconf = {
@@ -63,6 +64,10 @@ MongoClient.connect('mongodb://'+mdbconf.host+':'+mdbconf.port+'/'+mdbconf.db, f
   app.post('/login', function (req, res) {
     var username = req.body.username;
     var password = req.body.password;
+    
+    assert(username, "Login username");
+    assert(password, "Login password");
+    console.log("Usuario logueado correctamente");
     
     usersDAO.validateLogin(username, password, function (err, user) {
       if (err) {
